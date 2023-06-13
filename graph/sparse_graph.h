@@ -20,6 +20,7 @@ public:
             while (--nodes > 0 && --nodes_count > 0) {
                 graph[current][target] = rand_edge_weight();
                 graph[target][current] = graph[current][target];
+                edges_count++;
                 target++;
             }
             current++;

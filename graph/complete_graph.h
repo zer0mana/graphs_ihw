@@ -17,6 +17,7 @@ public:
                     continue;
                 }
 
+                edges_count++;
                 graph[i][j] = rand_edge_weight();
                 graph[j][i] = graph[i][j];
             }

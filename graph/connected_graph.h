@@ -13,6 +13,7 @@ public:
         for (int i = 0; i < n - 1; ++i) {
             graph[i][i + 1] = rand_edge_weight();
             graph[i + 1][i] = graph[i][i + 1];
+            edges_count++;
         }
         int koeff = n * n / 5; // n * n / 2 - максимальное количество ребер. разделим его на 2 чтобы получить примерно 0.5 коэффицент плотности.
         while (koeff > 0) {
@@ -26,6 +27,7 @@ public:
             }
             graph[node_x][node_y] = rand_edge_weight();
             graph[node_y][node_x] = graph[node_x][node_y];
+            edges_count++;
             koeff--;
         }
     }

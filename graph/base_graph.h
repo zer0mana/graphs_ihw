@@ -7,11 +7,12 @@
 
 using namespace std;
 
-long const INF = 2000;
+long const INF = 200000;
 
 class base_graph {
 public:
     vector<vector<long>> graph;
+    int edges_count = 0;
 
     // Генерация графа, если ребра нет, то INT32_MAX.
     base_graph(int n) {
@@ -20,7 +21,7 @@ public:
 
     // Случайный целый вес ребра от 1 до 10.
     int rand_edge_weight() {
-        return (rand() % 9) + 1;
+        return (rand() % 10) + 1;
     }
 
     // Выводит граф в консоль.
