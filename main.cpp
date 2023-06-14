@@ -9,7 +9,7 @@
 const string PATH = "../output.csv";
 const int ITERATIONS = 1010;
 const int STEP = 50;
-const int ATTEMPTS = 1;
+const int ATTEMPTS = 5;
 std::ofstream out;
 std::ifstream in;
 
