@@ -80,11 +80,13 @@ int main() {
     srand(time(NULL));
     // out.open(PATH);
 
-    // tester(Dijkstra_algorithm, "Dijkstra_algorithm");
-    // out << '\n';
-    // tester(Floyd_Warshell_algorithm, "Floyd_Warshell_algorithm");
-    // out << '\n';
-    // tester(Ford_Bellman_function, "Ford_Bellman_function");
+    tester(Dijkstra_algorithm_by_set, "Dijkstra_algorithm_by_set");
+    out << '\n';
+    tester(Dijkstra_algorithm_by_priority_queue, "Dijkstra_algorithm_by_priority_queue");
+    out << '\n';
+    tester(Floyd_Warshell_algorithm, "Floyd_Warshell_algorithm");
+    out << '\n';
+    tester(Ford_Bellman_function, "Ford_Bellman_function");
 
     // out.close();
 
@@ -98,7 +100,7 @@ int main() {
 
     string input;
 
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < 4; ++i) {
         in >> algorithm;
         cout << algorithm << '\n';
 

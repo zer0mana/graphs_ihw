@@ -2,12 +2,13 @@
 #define IHW3_SEARCH_FUNCTIONS_H
 #include <set>
 #include <chrono>
+#include <queue>
 
 // Алгоритмы поиска.
 
-// Алгоритм Дейкстры
+// Алгоритм Дейкстры через set
 // Иточник: https://e-maxx.ru/algo/dijkstra_sparse
-pair<int, int64_t> Dijkstra_algorithm(vector<vector<long>> graph, int n, int x, int y) {
+pair<int, int64_t> Dijkstra_algorithm_by_set(vector<vector<long>> graph, int n, int x, int y) {
     auto begin = std::chrono::steady_clock::now();
 
     vector<int> d(n, INF), p(n);
@@ -27,6 +28,39 @@ pair<int, int64_t> Dijkstra_algorithm(vector<vector<long>> graph, int n, int x, 
                 d[to] = d[v] + len;
                 p[to] = v;
                 q.insert(make_pair(d[to], to));
+            }
+        }
+    }
+
+    auto end = std::chrono::steady_clock::now();
+    auto elapsed_ms = std::chrono::duration_cast<std::chrono::microseconds>(end - begin);
+
+    return make_pair(d[y], elapsed_ms.count());
+}
+
+// Алгоритм Дейкстры через priority_queue
+// Иточник: https://e-maxx.ru/algo/dijkstra_sparse
+pair<int, int64_t> Dijkstra_algorithm_by_priority_queue(vector<vector<long>> graph, int n, int x, int y) {
+    auto begin = std::chrono::steady_clock::now();
+
+    vector<int> d(n, INF), p(n);
+    d[x] = 0;
+    priority_queue<pair<int, int>> q;
+    q.push(make_pair(d[x], x));
+    while (!q.empty()) {
+        int v = q.top().second, cur_d = -q.top().first;
+        q.pop();
+
+        if (cur_d > d[v]) continue;
+
+        for (size_t j = 0; j < graph[v].size(); ++j) {
+            int to = j;
+            int len = graph[v][j];
+
+            if (d[v] + len < d[to]) {
+                d[to] = d[v] + len;
+                p[to] = v;
+                q.push(make_pair(-d[to], to));
             }
         }
     }
