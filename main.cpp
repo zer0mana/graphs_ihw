@@ -64,8 +64,6 @@ vector < string > strings;
 void custom_split(string str, char separator) {
     int startIndex = 0, endIndex = 0;
     for (int i = 0; i <= str.size(); i++) {
-
-        // If we reached the end of the word or the end of the input.
         if (str[i] == separator || i == str.size()) {
             endIndex = i;
             string temp;
@@ -78,7 +76,7 @@ void custom_split(string str, char separator) {
 
 int main() {
     srand(time(NULL));
-    // out.open(PATH);
+    out.open(PATH);
 
     tester(Dijkstra_algorithm_by_set, "Dijkstra_algorithm_by_set");
     out << '\n';
@@ -88,7 +86,7 @@ int main() {
     out << '\n';
     tester(Ford_Bellman_function, "Ford_Bellman_function");
 
-    // out.close();
+    out.close();
 
     in.open(PATH);
 
@@ -109,7 +107,14 @@ int main() {
             cout << graph << '\n';
             cout << '\n';
 
-            for (int k = 10; k < ITERATIONS + 2 * STEP; k += STEP) {
+            in >> input;
+            custom_split(input, ';');
+            nodes += strings[0] + ',';
+            edges += strings[1] + ',';
+            time += strings[2] + ',';
+            strings.clear();
+
+            for (int k = 10; k < ITERATIONS + STEP; k += STEP) {
                 in >> input;
                 custom_split(input, ';');
                 nodes += strings[0] + ',';
